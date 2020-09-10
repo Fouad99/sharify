@@ -12,9 +12,9 @@ const DUMMY_PLACES = [
         address: 'Chemin Omar Kechkar, Algiers, Algérie',
         location: {
             lat: 36.7456417,
-            long: 3.0675888
+            lng: 3.0675888
         },
-        creator: 'Fouad'
+        creator: 'u1'
     },
     {
         id: 'p2',
@@ -24,9 +24,9 @@ const DUMMY_PLACES = [
         address: 'Chemin Omar Kechkar, Algiers, Algérie',
         location: {
             lat: 36.7456417,
-            long: 3.0675888
+            lng: 3.0675888
         },
-        creator: 'Ania'
+        creator: 'u2'
     }
 ]
 

@@ -10,8 +10,7 @@ const Users = () => {
   const USERS = [
     {
       id: 'u1',
-      name: '
-	    Foufou le Fou',
+      name: 'Foufou le Fou',
       image:
         'https://images.pexels.com/photos/839011/pexels-photo-839011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
       places: 3
@@ -32,7 +31,7 @@ const Users = () => {
     },
     {
       id: 'u4',
-      name: 'Qui est long',
+      name: 'emilie facile',
       image:
         'https://images.pexels.com/photos/839011/pexels-photo-839011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
       places: 7
