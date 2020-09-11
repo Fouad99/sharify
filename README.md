@@ -1,2 +1,2 @@
 # sharify
-A custom app to share pictures
+App to share pictures
