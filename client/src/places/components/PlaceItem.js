@@ -9,10 +9,26 @@ import Map from '../../shared/components/UIElements/Map';
 
 const PlaceItem = props => {
     const [showMap, setShowMap] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     const openMapHandler = () => setShowMap(true);
 
     const closeMapHandler = () => setShowMap(false);
+
+    const showDeleteHandler = () => {
+        setShowDeleteModal(true);
+    };
+
+    const cancelDeleteHandler = () => {
+        setShowDeleteModal(false);
+    };
+
+    const confirmDeleteHandler = () => {
+        setShowDeleteModal(false);
+
+        console.log("Delete done");
+    };
+
 
     return (
         <React.Fragment>
@@ -24,9 +40,25 @@ const PlaceItem = props => {
                 footerClass="place-item__modal-actions"
                 footer={<Button onClick={closeMapHandler}>Close</Button>}
             >
+
                 <div className="map-container">
                     <Map center={props.coordinates} zoom={15} />
                 </div>
+            </Modal>
+            <Modal
+                show={showDeleteModal}
+                onCancel={cancelDeleteHandler}
+                header="Delete Item"
+                footerClass="place-item__modal-actions"
+                footer={
+                    <React.Fragment>
+                        <Button danger onClick={confirmDeleteHandler}>Delete</Button>
+                        <Button inverse onClick={cancelDeleteHandler}>Cancel</Button>
+                    </React.Fragment>
+                }
+
+            >
+                <p>Do you really want to delete the post ?</p>
             </Modal>
             <li className="place-item">
                 <Card>
@@ -43,7 +75,7 @@ const PlaceItem = props => {
                     <div className="place-item__actions">
                         <Button inverse onClick={openMapHandler} >ViEW ON MAP</Button>
                         <Button to={`/places/${props.id}`} >EDIT</Button>
-                        <Button danger>DELETE</Button>
+                        <Button danger onClick={showDeleteHandler}>DELETE</Button>
                     </div>
                 </Card>
             </li >
