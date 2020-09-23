@@ -1,4 +1,5 @@
 const express = require('express');
+const HttpError = require('../models/http-error');
 
 const router = express.Router();
 
@@ -23,7 +24,9 @@ router.get('/user/:uid', (req, res, next) => {
         return p.creator === uid;
     });
     if (!place) {
-        return res.status(404).json({ message: 'Could not find a plce with the provided user ID.' });
+
+
+        return next(new HttpError('Could not find a place with the provided user Id', 404));
     }
 
     res.status(200).json({ place });
@@ -38,7 +41,8 @@ router.get('/:pid', (req, res, next) => {
 
     if (!place) {
 
-        return res.status(404).json({ message: 'Could not find a place with the provided place ID.' });
+        return next(new HttpError('Could not find a place with the provided place Id', 404));
+
     }
     res.status(200).json({ place });
 });
