@@ -9,7 +9,7 @@ const usersRoutes = require('./routes/users-routes');
 const app = express();
 
 // Setting up parser
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use('/api/places', placesRoutes);
 app.use('/api/users', usersRoutes);
