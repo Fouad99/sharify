@@ -30,16 +30,15 @@ const getPlaceById = (req, res, next) => {
     res.status(200).json({ place });
 }
 
-const getPlaceByUserId = (req, res, next) => {
-    console.log('Get request in places/user');
+const getPlacesByUserId = (req, res, next) => {
     const uid = req.params.uid;
-    const place = DUMMY_DATA.find(p => {
+    const places = DUMMY_DATA.filter(p => {
         return p.creator === uid;
     });
-    if (!place) {
+    if (!places || places.lenght === 0) {
 
 
-        return next(new HttpError('Could not find a place with the provided user Id', 404));
+        return next(new HttpError('Could not find places with the provided user Id', 404));
     }
 
     res.status(200).json({ place });
@@ -82,11 +81,10 @@ const deletePlaceById = (req, res, next) => {
     const placeId = req.params.pid;
     DUMMY_DATA = DUMMY_DATA.filter(p => p.id !== placeId);
     res.status(200).json({ message: "item deleted" });
-
 }
 
 exports.getPlaceById = getPlaceById;
-exports.getPlaceByUserId = getPlaceByUserId;
+exports.getPlacesByUserId = getPlacesByUserId;
 exports.createPlace = createPlace;
 exports.updatePlaceById = updatePlaceById;
 exports.deletePlaceById = deletePlaceById;
