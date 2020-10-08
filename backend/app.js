@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const placesRoutes = require('./routes/places-routes');
 const usersRoutes = require('./routes/users-routes');
@@ -30,9 +31,15 @@ app.use((error, req, res, next) => {
 });
 
 
+const url = 'mongodb+srv://foufou:yoyoki91@cluster01.qfy9x.mongodb.net/sharidy?retryWrites=true&w=majority'
 
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => {
+		console.log('DB connected !');
+		app.listen(5000);
+		console.log('Server connected !');
+	})
+	.catch(err => {
+		console.log('Cannot connect to DB, therefore no server connection established');
+	});
 
-
-app.listen(5000, () => {
-	console.log('Connected server');
-});
