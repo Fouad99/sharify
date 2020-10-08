@@ -31,7 +31,6 @@ app.use((error, req, res, next) => {
 });
 
 
-const url = 'mongodb+srv://foufou:yoyoki91@cluster01.qfy9x.mongodb.net/sharidy?retryWrites=true&w=majority'
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
